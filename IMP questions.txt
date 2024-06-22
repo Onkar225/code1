@@ -1,0 +1,1035 @@
+// singli linklist
+
+
+package com.app;
+
+public class LL {
+	Node head;
+	class Node {
+		String data;
+		Node next;
+
+		Node(String data) {
+			this.data = data;
+			this.next = null;
+		}
+
+	}
+
+	public void addFirst(String data) {
+	Node newNode=new Node(data);
+	if(head==null){
+		head=newNode;
+		return;
+	}
+	newNode.next=head;
+	head=newNode;
+}
+
+	public void addLast(String data) {
+		Node newNode = new Node(data);
+		if (head == null) {
+			head = newNode;
+			return;
+
+		}
+		Node currNode = head;
+		while (currNode.next != null) {
+			currNode = currNode.next;
+		}
+		currNode.next = newNode;
+	}
+
+	public void printList() {
+		if (head == null) {
+			System.out.println("list is empty");
+			return;
+		}
+		Node currNode = head;
+		while (currNode != null) {
+			System.out.println(currNode.data + "->");
+			currNode = currNode.next;
+		}
+		System.out.println("null");
+	}
+	
+	
+	
+	//delete first
+	
+	public void deleteFirst() {
+		if(head==null) {
+			System.out.println("the list is empty");
+			return;
+	}
+		head=head.next;
+}
+	public void deleteLast() {
+		if(head==null) {
+			System.out.println("the list is empty");
+			return;
+		}
+		if(head.next==null) {
+			head=null;
+			return;
+		}
+		Node secondLast=head;
+		Node lastNode=head.next;
+		while(lastNode.next!=null) {
+			lastNode=lastNode.next;
+			secondLast=secondLast.next;
+			
+		}
+		secondLast.next=null;
+	}
+
+	public static void main(String[] args) {
+
+		LL list = new LL();
+		list.addFirst("a");
+		list.addFirst("is");
+		list.printList();
+		list.addLast("list");
+		
+		list.addFirst("this");
+		list.printList();
+		
+		list.deleteFirst();
+		list.printList();
+		
+		list.deleteLast();
+		list.printList();
+
+	}
+}
+
+----------------------------------------------------------------------------------------------------------
+//circular linklist
+
+
+package com.app;
+
+public class IntlistNode {
+private int data;
+private IntlistNode next;
+
+public IntlistNode()
+{
+	data=0;
+	next=null;
+}
+public IntlistNode(int data) {
+	super();
+	this.data=data;
+}
+public int getData()
+{
+	return data;
+}
+public void setData(int data) {
+	this.data=data;
+	
+}
+public  IntlistNode getNext() {
+	return next;
+}
+public void setNext(IntlistNode next) {
+	this.next=next;
+}
+
+}
+
+
+
+
+package com.app;
+
+public class CircularLL {
+	IntlistNode last;
+
+	public CircularLL() {
+		
+	}
+
+	public void insertFirst(int data) {
+		IntlistNode new_node = new IntlistNode(data);
+		if (last == null) {
+			last = new_node;
+			last.setNext(new_node);
+			System.out.println(last.getNext());
+			return;
+		}
+
+		new_node.setNext(last.getNext());
+		last.setNext(new_node);
+		return;
+	}
+	public void insertLast(int data) {
+		IntlistNode new_node=new IntlistNode(data);
+		if(last==null) {
+			last=new_node;
+			last.setNext(new_node);
+			return;
+		}
+		new_node.setNext(last.getNext());
+		last.setNext(new_node);
+		last=new_node;
+		return;
+		
+	}
+	
+	//displaY METHOD
+	public void display()
+	{
+		System.out.println(last.getNext());
+		IntlistNode iter=last.getNext();
+		
+		
+			System.out.println("list is now:");
+			
+			do {
+				System.out.println(iter.getData()+" ");
+				iter=iter.getNext();
+			
+			}while(iter!=last.getNext());
+			
+		
+	}
+	public int deleteLast() {
+		int d=-999;
+		IntlistNode del;
+		if(last==null)
+		{
+			return d;
+		}
+		IntlistNode itr=last.getNext();
+		while(itr.getNext()!=last) {
+		itr=itr.getNext();
+		}
+		itr.setNext(last.getNext());{
+		d=last.getData();
+		last.setNext(null);
+		last=null;
+		last=itr;
+		return d;
+	}
+}
+}
+
+package com.app;
+
+public class UserOfClass {
+	public static void main(String args[]) {
+     //CircularLL obj2=new CircularLL();
+     //obj2.insertFirst(10);
+    // obj2.insertFirst(20);
+    // obj2.insertFirst(30);
+    // obj2.insertFirst(40);
+    // obj2.insertFirst(60);
+     
+     
+    //obj2.display();
+     
+		CircularLL obj2=new CircularLL();
+	obj2.insertLast(50);
+	obj2.insertLast(79);
+	obj2.insertLast(90);
+	obj2.insertLast(80);
+//		
+	obj2.display();
+//		
+//  	CircularLL obj4=new CircularLL();
+		
+		obj2.deleteLast();
+		//obj2.deleteLast();
+		//obj2.deleteLast();
+		//obj2.deleteLast();
+		//obj2.deleteLast();
+
+		//System.out.println(data);
+		
+		obj2.display();
+     
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------
+Stack operstions student
+==============
+
+
+package com.app;
+
+public class Student {
+	private int roll;
+	private String Name;
+	
+	public Student(int roll,String Name) {
+		this.roll=roll;
+		this.Name=Name;
+	}
+	public int getroll() {
+		return roll;
+	}
+	public int setroll()
+	{
+		return roll;
+	}
+	public String getName()
+	{
+		return Name;
+		
+	}
+	public String setName()
+	{
+		return Name;
+	}
+	@Override
+	public String toString() {
+		return "Student [roll=" + roll + ", Name=" + Name + "]";
+	}
+
+
+package com.app;
+
+
+public class StudentStack {
+
+	
+	private int top;
+	private Student[] arr;
+
+	public StudentStack()
+
+	{
+		top = -1;
+		arr = new Student[3];
+
+	}
+
+	public StudentStack(int s) {
+		top = -1;
+		arr = new Student[s];
+	}
+
+	public boolean isFull() {
+		if (top == arr.length - 1)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isEmpty() {
+		if (top == -1)
+			return true;
+		else
+			return false;
+	}
+
+	public void push(Student d) {
+		if (isFull()) {
+			System.out.println("\n stack overflow");
+			return;
+		}
+		top = top + 1;
+		arr[top] = d;
+		return;
+	}
+
+	public Student pop() {
+		Student d = null;
+		if (isEmpty()) {
+			System.out.println("\n underflow");
+			return d;
+		}
+
+		d = arr[top];
+		top = top - 1;
+		return d;
+	}
+
+	public Student peek() {
+		Student d = null;
+		if (isEmpty()) {
+			System.out.println("\n underflow");
+			return d;
+
+		}
+		d = arr[top];
+		return d;
+	}
+}
+
+
+package com.app;
+
+public class StudentMain {
+
+		public static void main(String[] args) {
+
+			StudentStack sm = new StudentStack(10);
+
+			Student st;
+
+			Student s = new Student(19, "deepak");
+
+			Student s1 = new Student(51, "omkar");
+
+			Student s2 = new Student(5, "Mangorushi");
+
+			Student s3 = new Student(1, "Omkdsgedfgar");
+			sm.push(s);
+			sm.push(s1);
+			sm.push(s2);
+			sm.push(s3);
+
+			st = sm.pop();
+			System.out.println(st);
+
+			st = sm.peek();
+			System.out.println(st);
+
+		}
+
+	}
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Bubble sort insertion sort and selection sort using student
+---------------------------------------------------
+
+package com.app;
+
+public class students {
+
+	private String name;
+	private int age;
+	private int rollNo;
+
+	public students(String name, int age, int rollNo) {
+		this.name = name;
+		this.age = age;
+		this.rollNo = rollNo;
+	}
+	// getters
+
+	public String getname() {
+		return name;
+	}
+
+	public int getage() {
+		return age;
+	}
+
+	public int getrollNo() {
+		return rollNo;
+	}
+
+	// method display student details
+	public void display() {
+		System.out.println("Name:" + name + ",Age:" + age + ",Roll no:" + rollNo);
+	}
+
+	// bubble sort method for sorting students by roll n o;
+
+	public static void Selectionsort(Student[]students) {
+		
+		int n=students.length;
+		for( int i=0;i<n-1;i++) {
+			for(int j=0;j<n-1-i;j++) {
+				if(students[j].getrollNo()>students[j+1].getrollNo()) {
+				//swap students[j] and students[j+1}
+				
+				Student temp=students[j];
+				students[j]=students[j+1];
+				students[j+1]=temp;
+				}
+		}
+	}
+		
+		
+		//selection sorting
+//		int i,j,min;
+//		for(i=0;i<students.length-1;i++)
+//		{
+//			min=i;
+//			for(j=i+1;j<students.length;j++)
+//			{
+//				if(students[j].getrollNo()<students[min].getrollNo())
+//					min=j;
+//			}
+//			if(min!=i)
+//			{
+//				Student temp=students[i];
+//				students[i]=students[min];
+//				students[min]=temp;
+//			}
+//		}
+//		
+		
+		
+		// LOGUC FOR INSERTION SORT
+		
+	
+		
+		     //   for (int i = 1; i < students.length; i++) {
+		         //   Student key = students[i];
+		         //   int j = i - 1;
+
+		          //  while (j >= 0 && students[j].getrollNo() > key.getrollNo()) {
+		          //      students[j + 1] = students[j];
+		           //     j--;
+		         //   }
+		        //    students[j + 1] = key;
+		     //   }
+		    }
+		 
+
+	
+
+	public static void main(String[] args) {
+		// creating of an array of an object
+		Student[] students = { new Student("alice", 20, 10), new Student("bob", 22, 1),
+
+				new Student("david", 23, 102)
+
+		};
+		// Displaying students before sorting
+		System.out.println("before sorting:");
+		for (Student student : students) {
+			student.display();
+		}
+		// sorting students by rollno by using bubble sort
+
+		Selectionsort(students);
+
+		// displaying students after sorting
+		System.out.println("after sorting");
+		for (Student student : students) {
+			student.display();
+		}
+	}
+
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------==
+
+student stackkk operations
+--------------------------------
+
+
+public class Student {
+	private int roll;
+	private String name;
+
+	public Student(int roll, String name) {
+		this.roll = roll;
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [roll=" + roll + ", name=" + name + "]";
+	}
+	
+
+}
+
+
+package com.app;
+
+public class StudentStack {
+	
+	private int top;
+	private Student[] arr;
+
+	public StudentStack() {
+		top = -1;
+		arr = new Student[3];
+	}
+
+	public StudentStack(int size) {
+		top = -1;
+		arr = new Student[size];
+	}
+	public boolean isEmpty()
+	{
+		if(top==-1)
+		return true;
+		else return false;
+	}
+	public boolean isFull()
+	{
+		if(top==arr.length-1)
+		return true;
+		else return false;
+	}
+	public void push(Student data)
+	{
+		if(isFull())
+		{
+			System.out.println("stack overflow..!");
+			return;
+		}
+		top++;
+		arr[top]=data;
+	}
+	public Student pop()
+	{
+		Student d=null;
+		if(isEmpty())
+			return d;
+		d=arr[top];
+		top--;
+		return d;
+	}
+	public Student peek()
+	{
+		Student d=null;
+		if(isEmpty())
+			return d;
+		d=arr[top];
+		return d;
+	}
+
+}
+
+package com.app;
+
+import java.util.Scanner;
+
+public class StudentStackMain {
+	
+	public static void main(String[] args) {
+		StudentStack st = new StudentStack();
+		Scanner s = new Scanner(System.in);
+		int ch = 0, data;
+		do {
+			System.out.println("********Stack Operations*******");
+			System.out.println("1.PUSH");
+			System.out.println("2.POP");
+			System.out.println("3.PEEK");
+			System.out.println("4.Exit");
+			System.out.println("Enter your choice....!");
+			ch = s.nextInt();
+			switch (ch) {
+			case 1:
+				System.out.println("Enter roll:");
+				int roll = s.nextInt();
+				System.out.println("Enter name");
+				String name=s.next();
+				//Student s1=new Student(roll,name);
+				st.push(new Student(roll,name));
+				break;
+			case 2:
+				Student status = st.pop();
+				if (status == null)
+					System.out.println("Stack is Underflow");
+				else
+					System.out.println(status + " popped....!");
+				break;
+			case 3:
+				Student peek = st.peek();
+				if (peek == null)
+					System.out.println("Stack is empty");
+				else
+					System.out.println("Peek element =" + peek);
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("Wrong Choice......!");
+				break;
+			}
+
+		} while (ch != 4);
+	}
+-----------------------------------------------------------------------------------------------------------
+
+student link list
+=============================
+
+package linklist_student;
+
+import java.util.Scanner;
+
+public class StudentMain {
+	public static void main(String[] args) {
+		LinkListStudent l=new LinkListStudent();
+		Student data=null;
+		Scanner s = new Scanner(System.in);
+		int ch = 0, pos = 0;
+		do {
+
+			System.out.println("********LinkLIst Student Operations*******");
+			System.out.println("1.InsertFirst");
+			System.out.println("2.InsertLast");
+			System.out.println("3.InsertByPosition");
+			System.out.println("4.InsertBefore");
+			System.out.println("5.InsertAfter");
+			System.out.println("6.InsertSorted");
+			System.out.println("7.DeleteFirst");
+			System.out.println("8.DeleteLast");
+			System.out.println("9.DeleteByPos");
+			System.out.println("10.display");
+			System.out.println("11.Count Nodes");
+			System.out.println("12.Exit");
+			System.out.println("Enter your choice....!");
+			ch = s.nextInt();
+			if (ch > 0 && ch < 7) {
+				System.out.println("Enter roll:");
+				int roll = s.nextInt();
+				System.out.println("Enter name:");
+				String name = s.next();
+				data=new Student(roll,name);
+			}
+			switch (ch) {
+			case 1:
+				l.insertFirst(data);
+				break;
+			case 2:
+				l.insertLast(data);
+				break;
+			case 3:
+				System.out.println("Enter pos:");
+				pos = s.nextInt();
+				l.insertByPos(data, pos);
+				break;
+			case 4:
+				System.out.println("Enter before:");
+				pos = s.nextInt();
+				l.insertBefore(data, pos);
+				break;
+			case 5:
+				System.out.println("Enter After:");
+				pos = s.nextInt();
+				l.insertAfter(data, pos);
+				break;
+			case 6:
+				l.insertSorted(data);
+				break;
+			case 7:
+				Student delete=l.deleteFirst();
+				if(delete==null)
+					System.out.println("List is Empty");
+				else
+					System.out.println(delete+" .....deleted!");
+				break;
+			case 8:
+				delete=l.deleteLast();
+				if(delete==null)
+					System.out.println("List is Empty");
+				else
+					System.out.println(delete+" .....deleted!");
+				break;
+			case 9:
+				System.out.println("Enter pos:");
+				pos = s.nextInt();
+				delete=l.deleteByPos(pos);
+				if(delete==null)
+					System.out.println("List is Empty");
+				else
+					System.out.println(delete+" .....deleted!");
+				break;
+			case 10:
+				System.out.println(l);
+				break;
+			case 11:
+				System.out.println("no of Nodes in List = "+l.count());
+				break;
+				
+			default:
+				System.out.println("Wrong Choice......!");
+				break;
+			}
+
+		} while (ch != 12);
+	}
+
+}
+
+
+
+
+package linklist_student;
+
+import linkList.IntNode;
+
+public class LinkListStudent {
+	StudentNode head;
+
+	public LinkListStudent()
+	{
+		head=null;
+	}
+
+	public void insertFirst(Student data) {
+		StudentNode new_node = new StudentNode(data);
+		if (head == null) {
+			head = new_node;
+			return;
+		}
+		new_node.setNext(head);
+		head = new_node;
+	}
+	
+	public void insertLast(Student data) {
+		StudentNode new_node = new StudentNode(data);
+		if (head == null) {
+			head = new_node;
+			return;
+		}
+		StudentNode itr = head;
+		while (itr.getNext() != null) {
+
+			itr = itr.getNext();
+		}
+		itr.setNext(new_node);
+	}
+
+	public void insertByPos(Student data, int pos) {
+		StudentNode new_node = new StudentNode(data);
+		if (pos == 1) {
+			insertFirst(data);
+			return;
+		}
+		if (head == null) {
+			head = new_node;
+			return;
+		}
+
+		StudentNode itr = head;
+		for (int i = 1; i < pos - 1 && itr.getNext() != null; i++, itr = itr.getNext());
+		new_node.setNext(itr.getNext());
+		itr.setNext(new_node);
+		return;
+	}
+	public void insertBefore(Student data,int before){
+		StudentNode new_node = new StudentNode(data);
+		if (head == null) {
+			head = new_node;
+			return;
+		}
+		if(head.getS().getRoll()==before)
+		{
+			new_node.setNext(head);
+			head.setNext(new_node);
+			return;
+		}
+		StudentNode itr=head;
+		while(itr.getNext()!=null && before>itr.getNext().getS().getRoll())
+			itr=itr.getNext();
+		if(itr.getNext()!=null)
+		{
+			new_node.setNext(itr.getNext());
+			itr.setNext(new_node);
+			return;
+		}else
+		{
+			System.out.println("value not id list");
+			return;
+		}
+	}
+	
+	public void insertAfter(Student data,int After){
+		StudentNode new_node = new StudentNode(data);
+		if (head == null) {
+			head = new_node;
+			return;
+		}
+		if(head.getS().getRoll()==After)
+		{
+			new_node.setNext(head);
+			head.setNext(new_node);
+			return;
+		}
+		StudentNode itr=head;
+		while(itr!=null && After>itr.getS().getRoll())
+			itr=itr.getNext();
+		if(itr!=null)
+		{
+			new_node.setNext(itr.getNext());
+			itr.setNext(new_node);
+			return;
+		}else
+		{
+			System.out.println("value not id list");
+			return;
+		}
+	}
+	
+	public void insertSorted(Student data) {
+		StudentNode new_node = new StudentNode(data);
+		if (head == null ||(data.getRoll())<(head.getS().getRoll())) {
+			new_node.setNext(head);
+			head=new_node;
+			return;
+		}
+		StudentNode itr=head;
+		while(itr.getNext()!=null && (data.getRoll())>(head.getS().getRoll()))
+			itr=itr.getNext();
+		new_node.setNext(itr.getNext());
+		itr.setNext(new_node);
+	}
+	
+	public Student deleteFirst()
+	{
+		Student d=null;
+		StudentNode deletable;
+		if(head==null)
+			return d;
+		d=head.getS();
+		deletable=head;
+		head=head.getNext();
+		deletable=null;
+		return d;
+	}
+	
+	public Student deleteLast()
+	{
+		Student d=null;
+		StudentNode deletable;
+		if(head==null)
+			return d;
+		StudentNode itr =head;
+		while(itr.getNext().getNext()!=null)
+			itr=itr.getNext();
+		deletable=itr.getNext();
+		d=deletable.getS();
+		itr.setNext(null);
+		deletable=null;
+		return d;		
+	}
+	public Student deleteByPos(int pos)
+	{
+		Student d=null;
+		StudentNode deletable;
+		if(head==null)
+			return d;
+		if(pos==1)
+		{
+			return deleteFirst();
+		}
+		StudentNode itr =head;
+		for(int i=1;i<pos-1 && itr.getNext()!=null;i++,itr=itr.getNext());
+		if(itr.getNext()!=null)
+		{
+		d=itr.getNext().getS();
+		deletable=itr.getNext();
+		itr.setNext(itr.getNext().getNext());
+		deletable=null;
+			return d;
+		}
+		else
+			{System.out.println("Invalid position");
+			return d;}
+	}
+	public int count()
+	{
+		int i=0;
+		if(head==null)
+			return i;
+		
+		StudentNode itr=head;
+		while(itr!=null)
+		{
+			itr=itr.getNext();
+			i++;
+		}
+		return i;
+	}
+	
+	public String toString() {
+		if (head == null)
+			return " List is empty";
+		String str = "List : ";
+		StudentNode itr = head;
+		while (itr != null) {
+			str = str + "->" + itr.getS() + " ";
+			itr = itr.getNext();
+		}
+		return str;
+	}
+
+}
+
+
+package linklist_student;
+
+public class Student {
+	private int roll;
+	private String name;
+
+	public Student() {}
+	public Student(int roll, String name) {
+		this.roll = roll;
+		this.name = name;
+	}
+
+	public int getRoll() {
+		return roll;
+	}
+
+	public void setRoll(int roll) {
+		this.roll = roll;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [roll=" + roll + ", name=" + name + "]";
+	}
+	
+
+}
+
+
+package linklist_student;
+
+public class StudentNode {
+	private Student s;
+	StudentNode next;
+	
+	public StudentNode()
+	{}
+	public StudentNode(Student s1)
+	{
+		s=new Student();
+		s.setName(s1.getName());
+		s.setRoll(s1.getRoll());
+		next=null;
+	}
+	
+	public Student getS() {
+		return s;
+	}
+	public void setS(Student s) {
+		this.s = s;
+	}
+	public StudentNode getNext() {
+		return next;
+	}
+	public void setNext(StudentNode next) {
+		this.next = next;
+	}
+	
+	
+
+}
+
+=========================================================================================================================
+
+
+
+
